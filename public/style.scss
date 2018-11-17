@@ -1,0 +1,23 @@
+@mixin myRing($size, $color){
+  border-radius: 50%;
+  height: $size;
+  width: $size;
+  vertical-align: -50%;
+  background-color: rgba(0,0,0,0);
+  box-shadow: $size/50 $size/50 $size/50 darken($color, 10%), inset $size/50 $size/50 $size/50 darken($color, 10%);
+  border: $size/11 solid $color;
+}
+.ring {
+  @include myRing(100px, darkorange)
+}
+.ring2{
+  @include myRing(400px, yellow)
+}
+
+
+@for $i from 1 through 6 {
+  .rings:nth-of-type(#{$i}) {
+    @include myRing(35px * (1+($i/3)), #666666);
+    margin-right: -((35px * (1+($i/2)))*0.35);
+  }
+}
